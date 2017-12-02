@@ -1,0 +1,149 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content=""/>
+  <meta property="og:image" content=""/>
+  <meta property="og:url" content=""/>
+  <meta property="og:site_name" content=""/>
+  <meta property="og:description" content=""/>
+  <meta name="twitter:title" content=""/>
+  <meta name="twitter:image" content=""/>
+  <meta name="twitter:url" content=""/>
+  <meta name="twitter:card" content=""/>
+  <title>{% block title %}{% endblock %}</title>
+
+  <link
+      href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700'
+      rel='stylesheet' type='text/css'>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+  <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div id="fh5co-wrap">
+  <header id="fh5co-header">
+    <div class="container">
+      <nav class="fh5co-main-nav">
+        <ul>
+          <li class="fh5co-active"><a
+              href="#"><span>Home</span></a>
+          </li>
+          <li>
+            <a href="{% url 'hospital_detail:detail' %}"><span>Articles</span></a>
+          </li>
+            <li>
+                 <a href="#login"><span>Login</span></a>
+            </li>
+{#          <li>#}
+{#            {% if request.user.username != '' %}#}
+{#              <a href="{% url 'users:user_logout' %}"><span>#}
+{#                {{ request.user.username }}</span></a>#}
+{#            {% else %}#}
+{#              <a href="{% url 'users:register' %}"><span>#}
+{#                Register/login</span></a>#}
+{#            {% endif %}#}
+{#          </li>#}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  {% block body %}
+  {% endblock %}
+</div>
+<footer id="fh5co-footer">
+  <div class="container">
+    <div id="contact-box" class="row">
+      <div class="col-sm-6">
+        <div class="block">
+          <h2>About US</h2>
+          <ul class="address-block">
+              <li>Nutri-Health is a one-stop nutrition management website who provide all detail of diet and disease due
+                  to
+                  lack of nutrient. It also provides the list of diet and health-related article. If you have any query
+                  regarding
+                  diet or nutrition management you
+                  frequently ask any type question that admin provide you solution by the mail to you or update it on a
+                  website.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="block">
+          <h2>Stop By For A visit</h2>
+          <ul class="address-block">
+            <li>
+                <i class="fa fa-map-marker"></i>Address : RoomNo-1004, Block B, PDPU High Rise Hostel, &nbsp; &nbsp;&nbsp;&nbsp;
+                Gandhinagar, Gujarat
+            </li>
+            <li>
+                <i class="fa fa-envelope-o"></i>Email: 201552060@iiitvadoadara.ac.in <br> &nbsp; &nbsp;&nbsp;&nbsp;
+                201552064@iiitvadodara.ac.in
+            </li>
+            <li>
+                <i class="fa fa-phone"></i>Phone:+8347773419 <br> &nbsp; &nbsp;&nbsp;&nbsp;+8209875707
+            </li>
+          </ul>
+
+          <ul class="social-icons">
+            <li>
+              <a href="#"><i class="fa fa-google"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-linkedin"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-pinterest"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-dribbble"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-behance"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script>
+  /*$(document).ready(function () {
+    $('.fh5co-main-nav li').click(function (event) {
+      //remove all pre-existing active classes
+      $('.fh5co-active').removeClass('fh5co-active');
+
+      //add the active class to the link we clicked
+      $(this).addClass('fh5co-active');
+
+      //Load the content
+      //e.g.
+      //load the page that the link was pointing to
+      // $('#content').load($(this).find(a).attr('href'));
+
+      event.preventDefault();
+    });
+  });*/
+</script>
+</body>
+</html>

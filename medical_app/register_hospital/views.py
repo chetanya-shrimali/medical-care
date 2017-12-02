@@ -1,15 +1,34 @@
+from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.decorators.csrf import csrf_protect
 
-from register_hospital.forms import HospitalForm
+from register_hospital.forms import HospitalForm, LoginForm
 from register_hospital.models import Hospital
 
 
-def login(request):
-    return HttpResponse("Login")
+@csrf_protect
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST['name']
+        password = request.POST['password']
+        print(username + "  " + password)
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('hospital_detail:detail')
+        return HttpResponse("invalid credentials")
+    else:
+        form = LoginForm()
+        return render(request, 'login.html', {'form': form})
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('home:home')
 
 
 def validate(request, pk):
@@ -36,10 +55,10 @@ class SignUpFormView(View):
             email_address = form.cleaned_data['email']
             password = form.cleaned_data['password']
             license_id = form.cleaned_data['license_id']
-            link = "localhost:8000/register/" + str(form.id) + "validate/"
-            print(link)
-            form.save()
 
+            form.save()
+            link = "localhost:8000/register/" + str(note.id) + "validate/"
+            print(link)
             if note is not None:
                 email = EmailMessage('Confirmation Mail from Medi-care',
                                      "Hey " + name + "\n\n"
@@ -55,5 +74,6 @@ class SignUpFormView(View):
                 #  ",\n\n" + "We have successfully recieved your note!!",
                 # to=[email_address]) email.send()
                 print('reached')
-                return redirect('hospital_detail:details')
+                return redirect('hospital_detail:detail')
         return render(request, self.template_name, {'form': form})
+
