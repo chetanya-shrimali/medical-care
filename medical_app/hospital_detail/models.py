@@ -37,6 +37,7 @@ class Tag(models.Model):
 
 
 class Review(models.Model):
+    detail = models.ForeignKey(Detail, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, null=False)
     email = models.CharField(max_length=500, null=False)
     comment = models.TextField()
