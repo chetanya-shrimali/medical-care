@@ -1,5 +1,8 @@
 from django.contrib import admin
-from hospital_detail.models import Details, Doctor
 
-admin.site.register(Details)
+from hospital_detail.models import Detail, Doctor, Tag, Review
+
+admin.site.register(Detail)
 admin.site.register(Doctor)
+admin.site.register(Tag)
+admin.site.register(Review)

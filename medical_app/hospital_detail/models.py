@@ -3,7 +3,7 @@ from django.db import models
 from register_hospital.models import Hospital
 
 
-class Details(models.Model):
+class Detail(models.Model):
     type_choices = (('GOV', 'Government'), ('PR', 'Private'))
     cost_choices = (('H', 'High'), ('M', 'Medium'), ('L', 'Low'))
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
@@ -17,11 +17,11 @@ class Details(models.Model):
     working_days = models.CharField(max_length=10, null=False)
     working_hours = models.CharField(max_length=10, null=False)
     blood_bank_availability = models.BooleanField(default=False)
-    avg_cost = models.CharField(max_length=10, choices=cost_choices)
+    avg_cost = models.CharField(default=0, max_length=10, choices=cost_choices)
 
 
 class Doctor(models.Model):
-    details = models.ForeignKey(Details, on_delete=models.CASCADE)
+    details = models.ForeignKey(Detail, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, null=False)
     qualification = models.CharField(max_length=100, null=False)
     speciality = models.CharField(max_length=100, null=False)
@@ -31,6 +31,12 @@ class Doctor(models.Model):
     experience = models.CharField(max_length=50, null=False)
 
 
-class Tags(models.Model):
-    details = models.ManyToManyField(Details)
+class Tag(models.Model):
+    details = models.ManyToManyField(Detail)
     tag = models.CharField(max_length=50, null=False)
+
+
+class Review(models.Model):
+    name = models.CharField(max_length=100, null=False)
+    email = models.CharField(max_length=500, null=False)
+    comment = models.TextField()
