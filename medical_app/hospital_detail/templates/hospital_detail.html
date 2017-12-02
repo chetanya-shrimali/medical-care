@@ -28,7 +28,8 @@
                     <hr>
                 <ul>
                     {% for review in review %}
-                        <li>{{ review.comment }}</li><br>
+                        <li>{{ review.name }}<br>
+                            {{ review.comment }}</li><br>
                     {% endfor %}
                 </ul>
                 </div>
