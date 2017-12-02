@@ -41,7 +41,7 @@ class Doctor(models.Model):
 
 
 class Tag(models.Model):
-    details = models.ManyToManyField(Detail)
+    details = models.ForeignKey(Detail, on_delete=models.CASCADE)
     tag = models.CharField(max_length=50, null=False)
 
     def __str__(self):

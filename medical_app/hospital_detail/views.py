@@ -11,8 +11,9 @@ def hospital_list(request):
 
 
 def hospital_detail(request, pk):
-    details = Detail.objects.get(pk=pk)
-    tag = Tag.objects.filter(details=details)
-    review = Review.objects.filter(details=details)
+    detail = Detail.objects.get(pk=pk)
+    # tag = Tag.objects.filter(detail)
+    review = Review.objects.filter(detail=detail)
+    # print(tag)
     return render(request, 'hospital_detail.html',
-                  {'details': details, 'tag': tag, 'review': review})
+                  {'details': detail, 'review': review})
