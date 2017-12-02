@@ -57,7 +57,7 @@ class SignUpFormView(View):
             license_id = form.cleaned_data['license_id']
 
             form.save()
-            link = "localhost:8000/register/" + str(note.id) + "validate/"
+            link = "localhost:8000/register/" + str(note.id) + "/validate/"
             print(link)
             if note is not None:
                 email = EmailMessage('Confirmation Mail from Medi-care',

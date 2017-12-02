@@ -22,32 +22,30 @@
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-          <span><a href="{% url 'hospital_detail:add_article' %}">Add New</a></span>
-          <br><br>
-          {% for article in all_articles %}
+          {% for hospital in detail_list %}
             <div class="fh5co-text article-box">
-              <div class="text-center"><h1>{{ article.title }}</h1>
+              <div class="text-center"><h1>{{ hospital.hospital.name }}</h1>
                 <hr>
               </div>
-              <span><small>{{ article.date }}</small></span><span
+              <span><small>date</small></span><span
                 style="float: right;">
               <small>Published by:</small><br>
-            <small>{{ article.publisher }}</small>
+            <small>publisher</small>
           </span>
               <div class="article-content">
-                {{ article.content }}
+                {{ hospital.description}}
               </div>
               <span>
-                <small><a href="{% url 'hospital_detail:full_article' article.id %}">Read More</a></small>
+                <small><a href="{% url 'hospital_detail:detail' hospital.id %}">Read More</a></small>
               </span>
               <span style="float: right;"><small>
                 {% if article.user_id == request.user.id %}
                   <a
-                      href="{% url 'hospital_detail:edit_article' article.id %}">  &nbsp;Edit&nbsp;</a>
+                      href="#">  &nbsp;Edit&nbsp;</a>
                   </small></span>
               </span>
               <span style="float: right;"><small><a
-                  href="{% url 'hospital_detail:delete_article' article.id %}">Delete | </a></small></span>
+                  href="#">Delete | </a></small></span>
               {% endif %}
             </div>
           {% endfor %}
