@@ -37,13 +37,13 @@
       <nav class="fh5co-main-nav">
         <ul>
           <li class="fh5co-active"><a
-              href="#"><span>Home</span></a>
+              href="{% url 'hospital_detail:list' %}#"><span>Home</span></a>
           </li>
           <li>
             <a href="{% url 'hospital_detail:list' %}"><span>Articles</span></a>
           </li>
             <li>
-                 <a href="#login"><span>Login</span></a>
+                 <a href="{% url 'register_hospital:signup' %}"><span>Register/Login</span></a>
             </li>
 {#          <li>#}
 {#            {% if request.user.username != '' %}#}
