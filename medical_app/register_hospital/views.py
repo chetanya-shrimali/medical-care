@@ -67,13 +67,13 @@ class SignUpFormView(View):
                                      "\n" +
                                      link,
                                      to=['chetanyashrimalie5@gmail.com',
-                                         'nkchoudhary696@gmail.com'])
+                                         email_address])
                 email.send()
 
                 # email = EmailMessage('Regarding feedback', "Hey " + name +
                 #  ",\n\n" + "We have successfully recieved your note!!",
                 # to=[email_address]) email.send()
                 print('reached')
-                return redirect('hospital_detail:detail')
+                return redirect('hospital_detail:list')
         return render(request, self.template_name, {'form': form})
 
