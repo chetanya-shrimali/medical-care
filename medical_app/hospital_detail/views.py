@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from hospital_detail.models import Detail, Hospital, Tag, Review
+from hospital_detail.models import Detail, Hospital, Review, Doctor
 
 
 def hospital_list(request):
@@ -14,6 +14,7 @@ def hospital_detail(request, pk):
     detail = Detail.objects.get(pk=pk)
     # tag = Tag.objects.filter(detail)
     review = Review.objects.filter(detail=detail)
+    doctor = Doctor.objects.filter(details=detail)
     # print(tag)
     return render(request, 'hospital_detail.html',
-                  {'details': detail, 'review': review})
+                  {'details': detail, 'review': review, 'doctor': doctor})

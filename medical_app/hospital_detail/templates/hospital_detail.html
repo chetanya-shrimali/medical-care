@@ -26,7 +26,18 @@
                     {{ details.address }} | {{ details.city }} | {{ details.state }} | {{ details.pincode }}<br>
                     | {{ details.type }} | {{ details.speciality }} | {{ details.avg_cost }} | {{ details.working_days}} | {{ details.working_hours }}
                     | {{ details.blood_bank_availability }}
+
                     <br><br><br><br>
+
+                    {% for doctor in doctor %}
+                            <li>{{ doctor.name }}<br>
+                                speciality: {{ doctor.speciality }} ||
+                            qualifications: {{ doctor.qualification }} ||
+                            timings: {{ doctor.timing_from }} - {{ doctor.timing_to }}
+                            experience: {{ doctor.experience }}
+
+                                </li><br>
+                        {% endfor %}
                     <h4>Reviews</h4>
                     <hr>
                     <ul>
