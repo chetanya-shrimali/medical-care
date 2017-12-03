@@ -23,15 +23,18 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <p>{{ details.description }}</p>
+                    {{ details.address }} | {{ details.city }} | {{ details.state }} | {{ details.pincode }}<br>
+                    | {{ details.type }} | {{ details.speciality }} | {{ details.avg_cost }} | {{ details.working_days}} | {{ details.working_hours }}
+                    | {{ details.blood_bank_availability }}
                     <br><br><br><br>
                     <h4>Reviews</h4>
                     <hr>
-                <ul>
-                    {% for review in review %}
-                        <li>{{ review.name }}<br>
-                            {{ review.comment }}</li><br>
-                    {% endfor %}
-                </ul>
+                    <ul>
+                        {% for review in review %}
+                            <li>{{ review.name }}<br>
+                                {{ review.comment }}</li><br>
+                        {% endfor %}
+                    </ul>
                 </div>
 
                 <div class="col-md-2"></div>
